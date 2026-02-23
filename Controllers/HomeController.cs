@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 
-public class HomeController : Controller
+public class HomeController(DataContext db) : Controller
 {
-  public IActionResult Index() => View();
+  // this controller depends on the DataContext
+  private readonly DataContext _dataContext = db;
+
+  public IActionResult Index() => View(_dataContext.Blogs);
 }
