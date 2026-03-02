@@ -1,0 +1,12 @@
+@model Blog
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="bg-primary m-1 p-1 text-white"><h4>Add Blog</h4></div>
+<form method="post">
+    <label asp-for="@Model.Name">Blog Name: </label>
+    <input asp-for="@Model.Name" placeholder="Blog Name" />
+    <button type="submit">Create</button>
+</form>
+
+<hr />
+<a asp-controller="Home" asp-action="Index">Home</a>
