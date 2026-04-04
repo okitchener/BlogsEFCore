@@ -37,4 +37,12 @@ public class AccountController(UserManager<AppUser> userMgr, SignInManager<AppUs
         }
         return View(details);
     }
+    [AllowAnonymous]
+    public ViewResult AccessDenied() => View();
+
+    public async Task<IActionResult> Logout()
+    {
+        await signInManager.SignOutAsync();
+        return RedirectToAction("Index", "Home");
+    }
 }
