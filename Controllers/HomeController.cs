@@ -39,14 +39,14 @@ public class HomeController(DataContext db) : Controller
     blog = _dataContext.Blogs.FirstOrDefault(b => b.BlogId == id),
     Posts = _dataContext.Posts.Where(p => p.BlogId == id)
   });
-  [Authorize(Roles = "blogs-moderate")]
+  [Authorize]
   public IActionResult AddPost(int id)
   {
     ViewBag.BlogId = id;
     return View(new Post());
   }
 
-  [Authorize(Roles = "blogs-moderate")]
+  [Authorize]
   [HttpPost]
   [ValidateAntiForgeryToken]
   public IActionResult AddPost(int id, Post post)

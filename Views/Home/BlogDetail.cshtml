@@ -27,10 +27,4 @@ else
 
 <hr />
 <a asp-controller="Home" asp-action="Index">Home</a>
-@if (User?.Identity?.IsAuthenticated ?? false)
-{
-  if (User.IsInRole("blogs-moderate"))
-  {
-    <span> | </span><a asp-controller="Home" asp-action="AddPost" asp-route-id="@Model.blog.BlogId">New Post</a>
-  }
-}
+<span> | </span><a asp-controller="Home" asp-action="AddPost" asp-route-id="@Model.blog.BlogId">New Post</a>

@@ -44,7 +44,7 @@ static async Task SeedUsersAndRolesAsync(IServiceProvider services)
         }
     }
 
-    await EnsureUserInRoleAsync(userManager, "gina", "gina@mail.com", "B@nanas1", roleName: null);
+    await EnsureUserInRoleAsync(userManager, "gina", "gina@mail.com", "B@nanas1", string.Empty);
     await EnsureUserInRoleAsync(userManager, "mark", "mark@mail.com", "B@nanas1", "blogs-moderate");
     await EnsureUserInRoleAsync(userManager, "alice", "alice@mail.com", "B@nanas1", "admin");
 }
@@ -54,9 +54,9 @@ static async Task EnsureUserInRoleAsync(
     string userName,
     string email,
     string password,
-    string? roleName)
+    string roleName)
 {
-    AppUser? user = await userManager.FindByEmailAsync(email);
+    AppUser user = await userManager.FindByEmailAsync(email);
 
     if (user == null)
     {
