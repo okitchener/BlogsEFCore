@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 public class HomeController(DataContext db) : Controller
 {
@@ -7,7 +7,7 @@ public class HomeController(DataContext db) : Controller
   private readonly DataContext _dataContext = db;
 
   public IActionResult Index() => View(_dataContext.Blogs.OrderBy(b => b.Name));
-
+[Authorize]
   public IActionResult AddBlog() => View(new Blog());
   [HttpPost]
   [ValidateAntiForgeryToken]
